@@ -207,9 +207,7 @@
         .responsive-grid {
           grid-template-columns: 1fr;
           gap: 1.5rem;
-        }
-        .service-card, .portfolio-item {
-          margin-bottom: 1.5rem;
+          padding: 0 1rem;
         }
       }
 
@@ -217,9 +215,7 @@
         .responsive-grid {
           grid-template-columns: 1fr;
           gap: 2rem;
-        }
-        .service-card, .portfolio-item {
-          margin-bottom: 2rem;
+          padding: 0 1.5rem;
         }
       }
 
@@ -227,9 +223,7 @@
         .responsive-grid {
           grid-template-columns: repeat(2, 1fr);
           gap: 2rem;
-        }
-        .service-card, .portfolio-item {
-          margin-bottom: 2rem;
+          padding: 0 2rem;
         }
       }
 
@@ -237,9 +231,7 @@
         .responsive-grid {
           grid-template-columns: repeat(2, 1fr);
           gap: 2.5rem;
-        }
-        .service-card, .portfolio-item {
-          margin-bottom: 2.5rem;
+          padding: 0 2.5rem;
         }
       }
 
@@ -247,10 +239,58 @@
         .responsive-grid {
           grid-template-columns: repeat(3, 1fr);
           gap: 3rem;
+          padding: 0 3rem;
         }
-        .service-card, .portfolio-item {
-          margin-bottom: 0;
+      }
+
+      /* Container styles to prevent horizontal scroll */
+      .max-w-7xl {
+        max-width: 100%;
+        padding: 0 1rem;
+        margin: 0 auto;
+        box-sizing: border-box;
+      }
+
+      @media (min-width: 640px) {
+        .max-w-7xl {
+          padding: 0 1.5rem;
         }
+      }
+
+      @media (min-width: 1024px) {
+        .max-w-7xl {
+          padding: 0 2rem;
+        }
+      }
+
+      /* Portfolio Item Specific Styles */
+      .portfolio-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+        aspect-ratio: 16/12;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .portfolio-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      /* Ensure grid items don't overflow */
+      .responsive-grid {
+        width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+      }
+
+      /* Prevent horizontal scroll on body */
+      body {
+        overflow-x: hidden;
+        width: 100%;
       }
 
       /* Service Card Specific Styles */
@@ -285,7 +325,7 @@
         position: relative;
         overflow: hidden;
         border-radius: 1rem;
-        aspect-ratio: 16/9;
+        aspect-ratio: 25/24;
       }
 
       .portfolio-item img {
