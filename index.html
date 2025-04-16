@@ -206,30 +206,131 @@
       @media (max-width: 480px) {
         .responsive-grid {
           grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        .service-card, .portfolio-item {
+          margin-bottom: 1.5rem;
         }
       }
 
       @media (min-width: 481px) and (max-width: 600px) {
         .responsive-grid {
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        .service-card, .portfolio-item {
+          margin-bottom: 2rem;
         }
       }
 
       @media (min-width: 601px) and (max-width: 768px) {
         .responsive-grid {
           grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+        .service-card, .portfolio-item {
+          margin-bottom: 2rem;
         }
       }
 
       @media (min-width: 769px) and (max-width: 1024px) {
         .responsive-grid {
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2.5rem;
+        }
+        .service-card, .portfolio-item {
+          margin-bottom: 2.5rem;
         }
       }
 
       @media (min-width: 1025px) {
         .responsive-grid {
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(3, 1fr);
+          gap: 3rem;
+        }
+        .service-card, .portfolio-item {
+          margin-bottom: 0;
+        }
+      }
+
+      /* Service Card Specific Styles */
+      .service-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 400px;
+        transition: all 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .service-card .icon-container {
+        flex-shrink: 0;
+      }
+
+      .service-card .content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .service-card .button-container {
+        margin-top: auto;
+      }
+
+      /* Portfolio Item Specific Styles */
+      .portfolio-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+        aspect-ratio: 16/9;
+      }
+
+      .portfolio-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .portfolio-item .overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .portfolio-item:hover .overlay {
+        opacity: 1;
+      }
+
+      .portfolio-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .portfolio-item .content {
+        text-align: center;
+        color: white;
+        padding: 2rem;
+      }
+
+      /* Ensure equal height for service cards in the same row */
+      .responsive-grid {
+        display: grid;
+        align-items: stretch;
+      }
+
+      /* Add max-width to prevent cards from becoming too wide on large screens */
+      @media (min-width: 1025px) {
+        .service-card, .portfolio-item {
+          max-width: 400px;
+          margin: 0 auto;
         }
       }
     </style>
@@ -327,54 +428,66 @@
           </p>
         </div>
         <!-- Service Cards Grid -->
-        <div class="responsive-grid grid-gap">
+        <div class="responsive-grid">
           <!-- Residential Design Card -->
           <div class="service-card rounded-lg shadow-2xl transition-all duration-300 hover:shadow-[0_20px_50px_rgba(184,134,11,0.1)] card-padding">
-            <div class="w-16 h-16 flex items-center justify-center bg-secondary/10 rounded-full mb-6">
+            <div class="icon-container w-16 h-16 flex items-center justify-center bg-secondary/10 rounded-full mb-6">
               <i class="ri-home-smile-line text-secondary text-2xl"></i>
             </div>
-            <h3 class="playfair card-title font-semibold text-primary mb-4">
-              Residential Design
-            </h3>
-            <p class="montserrat card-text text-gray-600 mb-6">
-              Transform your home into a personalized sanctuary with our bespoke residential design services.
-            </p>
-            <button class="montserrat text-secondary hover:text-secondary/80 transition-colors cursor-pointer flex items-center">
-              Learn More
-              <i class="ri-arrow-right-line ml-2"></i>
-            </button>
+            <div class="content">
+              <h3 class="playfair card-title font-semibold text-primary mb-4">
+                Residential Design
+              </h3>
+              <p class="montserrat card-text text-gray-600 mb-6">
+                Transform your home into a personalized sanctuary with our bespoke residential design services.
+              </p>
+              <div class="button-container">
+                <button class="montserrat text-secondary hover:text-secondary/80 transition-colors cursor-pointer flex items-center">
+                  Learn More
+                  <i class="ri-arrow-right-line ml-2"></i>
+                </button>
+              </div>
+            </div>
           </div>
           <!-- Commercial Design Card -->
           <div class="service-card rounded-lg shadow-2xl transition-all duration-300 hover:shadow-[0_20px_50px_rgba(184,134,11,0.1)] card-padding">
-            <div class="w-16 h-16 flex items-center justify-center bg-secondary/10 rounded-full mb-6">
+            <div class="icon-container w-16 h-16 flex items-center justify-center bg-secondary/10 rounded-full mb-6">
               <i class="ri-building-line text-secondary text-2xl"></i>
             </div>
-            <h3 class="playfair card-title font-semibold text-primary mb-4">
-              Commercial Design
-            </h3>
-            <p class="montserrat card-text text-gray-600 mb-6">
-              Create inspiring workspaces that boost productivity and reflect your brand identity.
-            </p>
-            <button class="montserrat text-secondary hover:text-secondary/80 transition-colors cursor-pointer flex items-center">
-              Learn More
-              <i class="ri-arrow-right-line ml-2"></i>
-            </button>
+            <div class="content">
+              <h3 class="playfair card-title font-semibold text-primary mb-4">
+                Commercial Design
+              </h3>
+              <p class="montserrat card-text text-gray-600 mb-6">
+                Create inspiring workspaces that boost productivity and reflect your brand identity.
+              </p>
+              <div class="button-container">
+                <button class="montserrat text-secondary hover:text-secondary/80 transition-colors cursor-pointer flex items-center">
+                  Learn More
+                  <i class="ri-arrow-right-line ml-2"></i>
+                </button>
+              </div>
+            </div>
           </div>
           <!-- Luxury Renovation Card -->
           <div class="service-card rounded-lg shadow-2xl transition-all duration-300 hover:shadow-[0_20px_50px_rgba(184,134,11,0.1)] card-padding">
-            <div class="w-16 h-16 flex items-center justify-center bg-secondary/10 rounded-full mb-6">
+            <div class="icon-container w-16 h-16 flex items-center justify-center bg-secondary/10 rounded-full mb-6">
               <i class="ri-paint-brush-line text-secondary text-2xl"></i>
             </div>
-            <h3 class="playfair card-title font-semibold text-primary mb-4">
-              Luxury Renovation
-            </h3>
-            <p class="montserrat card-text text-gray-600 mb-6">
-              Complete renovation services with attention to detail and premium materials.
-            </p>
-            <button class="montserrat text-secondary hover:text-secondary/80 transition-colors cursor-pointer flex items-center">
-              Learn More
-              <i class="ri-arrow-right-line ml-2"></i>
-            </button>
+            <div class="content">
+              <h3 class="playfair card-title font-semibold text-primary mb-4">
+                Luxury Renovation
+              </h3>
+              <p class="montserrat card-text text-gray-600 mb-6">
+                Complete renovation services with attention to detail and premium materials.
+              </p>
+              <div class="button-container">
+                <button class="montserrat text-secondary hover:text-secondary/80 transition-colors cursor-pointer flex items-center">
+                  Learn More
+                  <i class="ri-arrow-right-line ml-2"></i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -391,32 +504,32 @@
           </p>
         </div>
         <!-- Portfolio Grid -->
-        <div class="responsive-grid grid-gap">
+        <div class="responsive-grid">
           <!-- Portfolio Item 1 -->
-          <div class="group relative overflow-hidden rounded-lg">
-            <img src="https://public.readdy.ai/ai/img_res/13eb52bf0b055af982bfdfc3223391b7.jpg" alt="Portfolio 1" class="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-110">
-            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <div class="text-center">
+          <div class="portfolio-item">
+            <img src="https://public.readdy.ai/ai/img_res/13eb52bf0b055af982bfdfc3223391b7.jpg" alt="Portfolio 1">
+            <div class="overlay">
+              <div class="content">
                 <h3 class="playfair card-title text-white mb-2">Modern Elegance</h3>
                 <p class="montserrat card-text text-white/80">Residential Project</p>
               </div>
             </div>
           </div>
           <!-- Portfolio Item 2 -->
-          <div class="group relative overflow-hidden rounded-lg">
-            <img src="https://public.readdy.ai/ai/img_res/7d0191573035132b744f52278c8b36db.jpg" alt="Portfolio 2" class="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-110">
-            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <div class="text-center">
+          <div class="portfolio-item">
+            <img src="https://public.readdy.ai/ai/img_res/7d0191573035132b744f52278c8b36db.jpg" alt="Portfolio 2">
+            <div class="overlay">
+              <div class="content">
                 <h3 class="playfair card-title text-white mb-2">Corporate Haven</h3>
                 <p class="montserrat card-text text-white/80">Commercial Project</p>
               </div>
             </div>
           </div>
           <!-- Portfolio Item 3 -->
-          <div class="group relative overflow-hidden rounded-lg">
-            <img src="https://public.readdy.ai/ai/img_res/239b5a02daa9e74ae6fbc093313d178b.jpg" alt="Portfolio 3" class="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-110">
-            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <div class="text-center">
+          <div class="portfolio-item">
+            <img src="https://public.readdy.ai/ai/img_res/239b5a02daa9e74ae6fbc093313d178b.jpg" alt="Portfolio 3">
+            <div class="overlay">
+              <div class="content">
                 <h3 class="playfair card-title text-white mb-2">Luxury Hotel</h3>
                 <p class="montserrat card-text text-white/80">Hospitality Project</p>
               </div>
